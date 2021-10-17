@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import styled from 'styled-components';
 
 const Create = () => {
 	const [title, setTitle] = useState('');
@@ -27,8 +28,8 @@ const Create = () => {
 	}
 
 	return (
-		<div className="create">
-			<h2>Add a new blog</h2>
+		<CreateBlog>
+			<Title>Add a new blog</Title>
 			<form onSubmit={handleSubmit}>
 				<label>Blog title:</label>
 				<input
@@ -51,11 +52,47 @@ const Create = () => {
 					<option value="mario">mario</option>
 					<option value="yoshi">yoshi</option>
 				</select>
-				{!isPending && <button>Add blog</button>}
-				{isPending && <button disabled>Adding blog...</button>}
+				{!isPending && <CreateButton>Add blog</CreateButton>}
+				{isPending && <CreateButton disabled>Adding blog...</CreateButton>}
 			</form>
-		</div>
+		</CreateBlog>
 	);
 }
+
+const CreateBlog = styled.div`
+	max-width: 400px;
+	margin: 0 auto;
+	text-align: center;
+	label {
+		text-align: left;
+		display: block;
+	}
+
+	input, 
+	textarea, 
+	select {
+		width: 100%;
+		padding: 6px 10px;
+		margin: 10px 0;
+		border: 1px solid #ddd;
+		box-sizing: border-box;
+		display: block;
+	}
+`;
+
+const Title = styled.h2`
+	font-size: 20px;
+	color: #f1356d;
+	margin-bottom: 30px;
+`;
+
+const CreateButton = styled.button`
+	background: #f1356d;
+  	color: #fff;
+	border: 0;
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+`;
 
 export default Create;

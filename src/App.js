@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Navbar from './Navbar';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -12,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <div className="content">
+        <Content>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -27,10 +28,16 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-        </div>
+        </Content>
       </div>
     </Router>
   );
 }
+
+const Content = styled.div`
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+`;
 
 export default App;
